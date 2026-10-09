@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Freehold — a budget you own, not rent</title>
+<meta name="description" content="A family budget &amp; debt payoff planner you buy once — not rent forever. No subscription, no bank login, no account. Your numbers never leave your computer.">
+<style>
+  body{margin:0}
+  :root{
+    --navy-dark:#182036;
+    --navy-mid:#222B3D;
+    --cream:#F8F3E7;
+    --paper:#FFFDF8;
+    --gold:#B8912B;
+    --gold-light:#E9D9A7;
+    --ink:#20263A;
+    --ink-soft:#565F78;
+    --hair:rgba(32,38,58,.12);
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--cream)}
+  .fh-root{
+    font-family:"Source Serif Pro","Iowan Old Style","Palatino Linotype",Georgia,serif;
+    color:var(--ink);
+    background:var(--cream);
+  }
+  .fh-sans{font-family:"Avenir Next","Century Gothic","Segoe UI",sans-serif}
+  a{color:inherit;text-decoration:none}
+
+  .fh-topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:28px clamp(24px,5vw,72px);
+  }
+  .fh-wordmark{
+    font-size:26px;letter-spacing:.015em;color:var(--navy-dark);font-weight:600;
+  }
+  .fh-wordmark em{color:var(--gold);font-style:normal}
+  .fh-buy-link{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:15px;font-weight:600;color:var(--navy-dark);
+    border:1.5px solid var(--navy-dark);border-radius:4px;
+    padding:10px 20px;
+  }
+
+  .fh-hero{
+    padding:36px clamp(24px,6vw,96px) 84px;
+    display:flex;flex-direction:column;align-items:flex-start;gap:26px;
+    max-width:900px;
+  }
+  .fh-kicker{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:14px;color:var(--ink-soft);font-weight:600;
+  }
+  .fh-h1{
+    font-size:clamp(34px,5.2vw,58px);line-height:1.08;margin:0;
+    color:var(--navy-dark);max-width:16ch;
+  }
+  .fh-h1 .fh-dash{color:var(--gold)}
+  .fh-sub{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:19px;line-height:1.55;color:var(--ink-soft);max-width:62ch;margin:0;
+  }
+  .fh-cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:6px}
+  .fh-btn-primary{
+    font-family:"Avenir Next","Segoe UI",sans-serif;font-weight:700;font-size:16px;
+    background:var(--navy-dark);color:var(--gold-light);
+    padding:16px 30px;border-radius:4px;display:inline-block;
+  }
+  .fh-btn-price{
+    font-family:"Avenir Next","Segoe UI",sans-serif;font-size:15px;color:var(--ink-soft);
+  }
+  .fh-btn-price b{color:var(--navy-dark);font-size:17px}
+
+  .fh-hook{
+    font-size:21px;line-height:1.6;max-width:44ch;color:var(--ink);
+    padding:0 clamp(24px,6vw,96px) 72px;
+  }
+
+  .fh-features{
+    padding:8px clamp(24px,6vw,96px) 88px;
+    border-top:1px solid var(--hair);
+  }
+  .fh-section-head{
+    font-size:clamp(26px,3vw,36px);margin:56px 0 40px;color:var(--navy-dark);max-width:20ch;
+  }
+  .fh-feature-grid{
+    display:grid;grid-template-columns:repeat(2,minmax(260px,1fr));gap:48px 56px;
+  }
+  .fh-feature{display:flex;gap:18px;align-items:flex-start}
+  .fh-feature-icon{
+    flex:none;width:44px;height:44px;border-radius:50%;
+    background:var(--navy-dark);display:flex;align-items:center;justify-content:center;
+  }
+  .fh-feature-icon svg{width:22px;height:22px;stroke:var(--gold-light)}
+  .fh-feature h3{
+    font-size:19px;margin:2px 0 8px;color:var(--navy-dark);font-weight:600;
+  }
+  .fh-feature p{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:15.5px;line-height:1.6;color:var(--ink-soft);margin:0;max-width:46ch;
+  }
+  .fh-feature--wide{grid-column:1 / -1;max-width:56ch}
+
+  .fh-privacy{
+    background:linear-gradient(165deg,var(--navy-dark),var(--navy-mid));
+    color:var(--cream);
+    padding:92px clamp(24px,6vw,96px);
+    display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px;
+  }
+  .fh-privacy h2{
+    font-size:clamp(28px,3.6vw,42px);margin:0;max-width:18ch;color:#fff;
+  }
+  .fh-privacy p{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:18px;line-height:1.65;max-width:52ch;color:var(--gold-light);margin:0;
+  }
+  .fh-privacy .fh-p2{color:rgba(248,243,231,.82)}
+  .fh-privacy-rule{width:52px;height:3px;background:var(--gold);border:none}
+
+  .fh-forwho{
+    padding:92px clamp(24px,6vw,96px);
+    max-width:980px;
+  }
+  .fh-forwho ul{
+    list-style:none;margin:0;padding:0;
+    display:grid;grid-template-columns:repeat(2,minmax(240px,1fr));gap:0 48px;
+  }
+  .fh-forwho li{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:16.5px;line-height:1.6;color:var(--ink);
+    padding:20px 0;border-top:1px solid var(--hair);
+    display:flex;gap:14px;
+  }
+  .fh-forwho li:nth-last-child(-n+1),
+  .fh-forwho li:nth-last-child(2){border-bottom:1px solid var(--hair)}
+  .fh-forwho-mark{color:var(--gold);flex:none;font-size:18px;line-height:1.4}
+
+  .fh-faq{
+    padding:92px clamp(24px,6vw,96px);background:var(--paper);
+    border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+  }
+  .fh-faq-inner{max-width:760px;margin:0 auto}
+  .fh-faq details{
+    border-bottom:1px solid var(--hair);padding:22px 0;
+  }
+  .fh-faq summary{
+    font-size:19px;font-weight:600;color:var(--navy-dark);cursor:pointer;
+    list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  .fh-faq summary::-webkit-details-marker{display:none}
+  .fh-faq summary::after{
+    content:"+";color:var(--gold);font-size:24px;font-family:"Avenir Next",sans-serif;flex:none;
+  }
+  .fh-faq details[open] summary::after{content:"–"}
+  .fh-faq p{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:16px;line-height:1.65;color:var(--ink-soft);
+    margin:14px 0 0;max-width:62ch;
+  }
+
+  .fh-final{
+    padding:100px clamp(24px,6vw,96px) 72px;
+    text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;
+  }
+  .fh-final h2{font-size:clamp(28px,3.4vw,40px);margin:0;color:var(--navy-dark)}
+  .fh-final-oneliner{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:15px;color:var(--ink-soft);margin-top:18px;
+  }
+  .fh-footer{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:13px;color:var(--ink-soft);text-align:center;
+    padding:28px 24px 56px;
+  }
+
+  @media (max-width:720px){
+    .fh-feature-grid{grid-template-columns:1fr}
+    .fh-forwho ul{grid-template-columns:1fr}
+    .fh-forwho li:nth-last-child(2){border-bottom:none}
+    .fh-topbar{padding:22px 20px}
+    .fh-hero,.fh-hook,.fh-features,.fh-privacy,.fh-forwho,.fh-faq,.fh-final{
+      padding-left:20px;padding-right:20px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="fh-root">
+
+  <header class="fh-topbar">
+    <div class="fh-wordmark">Freehold<em>.</em></div>
+    <a class="fh-buy-link" href="#buy">Buy once — $29</a>
+  </header>
+
+  <section class="fh-hero">
+    <div class="fh-kicker fh-sans">BUDGET &amp; DEBT PAYOFF PLANNER</div>
+    <h1 class="fh-h1">A family budget you buy once <span class="fh-dash">—</span> not rent forever.</h1>
+    <p class="fh-sub">Track income and expenses, plan your debt-free date, and see your finances trend over years — all in one file that lives on your computer, not someone else's server.</p>
+    <div class="fh-cta-row">
+      <a class="fh-btn-primary" href="#buy">Buy now</a>
+      <span class="fh-btn-price">One-time payment, <b>$29</b>. No subscription, ever.</span>
+    </div>
+  </section>
+
+  <p class="fh-hook fh-sans">Every budgeting app wants your bank login and a monthly fee. This one wants neither. It's a single file — no install, no account, no subscription — that opens in any browser and keeps every number exactly where you typed it: on your own device.</p>
+
+  <section class="fh-features">
+    <h2 class="fh-section-head">What's inside</h2>
+    <div class="fh-feature-grid">
+
+      <div class="fh-feature">
+        <div class="fh-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+        </div>
+        <div>
+          <h3>Monthly Budget</h3>
+          <p>Track income (with support for multiple paychecks per month) and expenses by category, side by side against what you actually spend. Roll projections forward month to month with one click.</p>
+        </div>
+      </div>
+
+      <div class="fh-feature">
+        <div class="fh-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+        </div>
+        <div>
+          <h3>Yearly Analysis</h3>
+          <p>See every category and income source broken out by month across the whole year — where the money actually went, not just this month's snapshot.</p>
+        </div>
+      </div>
+
+      <div class="fh-feature">
+        <div class="fh-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M12 2l-3 3M12 2l3 3M12 22l-3-3M12 22l3-3M2 12h20M2 12l3-3M2 12l3 3M22 12l-3-3M22 12l-3 3"/></svg>
+        </div>
+        <div>
+          <h3>Debt Snowball &amp; Avalanche</h3>
+          <p>List your debts and it sorts them automatically — smallest balance first, or highest interest rate first. Type in what you can pay this month and it works out the split: minimums on everything, every spare dollar on the one at the top. Shows your real payoff date, total interest, and exactly how much you're saving by paying more than the minimum.</p>
+        </div>
+      </div>
+
+      <div class="fh-feature">
+        <div class="fh-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-7 4 4 8-9"/><path d="M15 5h6v6"/></svg>
+        </div>
+        <div>
+          <h3>Multi-Year Trend</h3>
+          <p>Every year you've used it, tracked side by side: income, expenses, savings, and your debt balance at year's end. Watch the shape of your financial life over time.</p>
+        </div>
+      </div>
+
+      <div class="fh-feature fh-feature--wide">
+        <div class="fh-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6M14 20c0-2.6 1.8-4.7 4-4.7s4 2.1 4 4.7"/></svg>
+        </div>
+        <div>
+          <h3>Built for households, not just individuals</h3>
+          <p>Set up separate, private profiles for different people or households sharing the same computer — each with its own optional passcode, each seeing only their own numbers.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="fh-privacy">
+    <hr class="fh-privacy-rule">
+    <h2>No bank login. No account. No server.</h2>
+    <p>Every number you type stays in your browser, on your computer, full stop. Export a backup any time you want a copy — that's the only way your data ever leaves the device, and it's entirely your choice.</p>
+    <p class="fh-p2">If you've ever hesitated to hand a budgeting app your bank password, this is the app for people who had that same hesitation and never got over it.</p>
+  </section>
+
+  <section class="fh-forwho">
+    <h2 class="fh-section-head">Who it's for</h2>
+    <ul>
+      <li><span class="fh-forwho-mark">—</span><span>Anyone tired of paying $10–15 a month for something a spreadsheet used to do for free</span></li>
+      <li><span class="fh-forwho-mark">—</span><span>People actively working a debt snowball or avalanche plan</span></li>
+      <li><span class="fh-forwho-mark">—</span><span>Privacy-conscious people who don't want financial software talking to a bank API</span></li>
+      <li><span class="fh-forwho-mark">—</span><span>Multi-person households who want separate budgets without paying for extra seats</span></li>
+      <li><span class="fh-forwho-mark">—</span><span>Anyone who just wants to open a file and see their numbers — no dashboard, no onboarding flow, no "connect your accounts" wall</span></li>
+    </ul>
+  </section>
+
+  <section class="fh-faq">
+    <div class="fh-faq-inner">
+      <h2 class="fh-section-head" style="margin-top:0">Questions people ask first</h2>
+
+      <details>
+        <summary>Does it sync across my phone and computer?</summary>
+        <p>Not automatically — it's intentionally local-only, which is the whole privacy pitch. You can export a backup file and import it on another device manually whenever you want to move your data.</p>
+      </details>
+
+      <details>
+        <summary>What if I lose my computer or clear my browser data?</summary>
+        <p>As long as you've used Export Backup, you can restore everything instantly from that file. That backup habit is the one thing worth building — everything else is automatic.</p>
+      </details>
+
+      <details>
+        <summary>Is my passcode actually secure?</summary>
+        <p>It's a screen lock — enough to stop someone from casually opening the app and seeing your numbers. It isn't encryption, and we'd rather tell you that plainly than let you assume otherwise.</p>
+      </details>
+
+      <details>
+        <summary>Can I connect my bank account?</summary>
+        <p>No, and that's by design. Everything is entered manually, which is also exactly why nothing about your finances ever touches a server.</p>
+      </details>
+
+      <details>
+        <summary>Do I need to know Excel or spreadsheets?</summary>
+        <p>No — it's a real app interface with buttons, tabs, and dropdowns, not a spreadsheet. If you've used any budgeting app before, this will feel familiar.</p>
+      </details>
+
+    </div>
+  </section>
+
+  <section class="fh-final">
+    <h2>One file. One payment. Yours forever.</h2>
+    <a class="fh-btn-primary" href="#buy">Buy now — $29</a>
+    <div class="fh-final-oneliner">Freehold — the budgeting app you own, not rent.</div>
+  </section>
+
+  <footer class="fh-footer">Works in any modern browser, Mac or PC. Nothing you enter ever leaves your device. &nbsp;·&nbsp; <a href="privacy.html" style="color:var(--gold);text-decoration:underline">Privacy Policy</a></footer>
+
+</div>
+</body>
+</html>
