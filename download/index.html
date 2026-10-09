@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Freehold — Download</title>
+<meta name="description" content="Download the latest version of Freehold for Windows.">
+<style>
+  body{margin:0}
+  :root{
+    --navy-dark:#182036;
+    --navy-mid:#222B3D;
+    --cream:#F8F3E7;
+    --paper:#FFFDF8;
+    --gold:#B8912B;
+    --gold-light:#E9D9A7;
+    --ink:#20263A;
+    --ink-soft:#565F78;
+    --hair:rgba(32,38,58,.14);
+    --green:#2E6B3E;
+    --green-bg:#EAF4EC;
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--cream)}
+  .dl-root{
+    font-family:"Source Serif Pro","Iowan Old Style","Palatino Linotype",Georgia,serif;
+    color:var(--ink);background:var(--cream);
+  }
+  .dl-sans{font-family:"Avenir Next","Century Gothic","Segoe UI",sans-serif}
+  a{color:var(--gold)}
+  .dl-topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:28px clamp(24px,5vw,72px);
+  }
+  .dl-wordmark{font-size:24px;color:var(--navy-dark);font-weight:600}
+  .dl-wordmark em{color:var(--gold);font-style:normal}
+  .dl-back{
+    font-family:"Avenir Next","Segoe UI",sans-serif;font-size:14px;font-weight:600;
+    color:var(--navy-dark);
+  }
+  .dl-wrap{
+    max-width:640px;margin:0 auto;
+    padding:28px clamp(24px,6vw,72px) 110px;
+  }
+  .dl-kicker{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:13.5px;color:var(--ink-soft);margin-bottom:10px;
+  }
+  .dl-h1{font-size:clamp(32px,4.4vw,46px);line-height:1.1;margin:0 0 16px;color:var(--navy-dark)}
+  .dl-lede{
+    font-size:18px;line-height:1.6;color:var(--ink);margin:0 0 36px;max-width:52ch;
+  }
+
+  .dl-card{
+    background:var(--paper);border:1px solid var(--hair);border-radius:10px;
+    padding:30px 32px;margin:0 0 20px;
+  }
+  .dl-version-row{
+    display:flex;align-items:center;gap:10px;margin-bottom:18px;
+    font-family:"Avenir Next","Segoe UI",sans-serif;font-size:13.5px;color:var(--ink-soft);
+  }
+  .dl-version-dot{width:7px;height:7px;border-radius:50%;background:var(--ink-soft);flex:none}
+  .dl-version-dot.ready{background:var(--green)}
+  .dl-version-num{font-family:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;color:var(--navy-dark);font-weight:600}
+
+  .dl-btn{
+    font-family:"Avenir Next","Segoe UI",sans-serif;font-weight:700;font-size:16px;
+    background:var(--navy-dark);color:var(--gold-light);
+    padding:16px 28px;border-radius:4px;display:inline-flex;align-items:center;gap:10px;
+    width:100%;justify-content:center;
+  }
+  .dl-btn svg{width:18px;height:18px;stroke:var(--gold-light)}
+  .dl-fineprint{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:13px;color:var(--ink-soft);margin:14px 0 0;line-height:1.5;
+  }
+
+  .dl-section{padding:28px 0;border-top:1px solid var(--hair)}
+  .dl-section h2{font-size:19px;margin:0 0 10px;color:var(--navy-dark)}
+  .dl-section p{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:15px;line-height:1.65;color:var(--ink-soft);margin:0 0 10px;max-width:56ch;
+  }
+
+  .dl-footer{
+    font-family:"Avenir Next","Segoe UI",sans-serif;
+    font-size:13px;color:var(--ink-soft);text-align:center;
+    padding:0 24px 56px;
+  }
+</style>
+</head>
+<body>
+<div class="dl-root">
+
+  <header class="dl-topbar">
+    <div class="dl-wordmark">Freehold<em>.</em></div>
+    <a class="dl-back" href="../index.html">Back to Freehold</a>
+  </header>
+
+  <div class="dl-wrap">
+    <div class="dl-kicker">GET THE APP</div>
+    <h1 class="dl-h1">Download Freehold</h1>
+    <p class="dl-lede">For people who've already bought Freehold and need the installer, or want to grab the latest version. If you haven't bought it yet, <a href="../index.html#buy">buy it here first</a> — you'll need a license key from that purchase to activate the app after installing.</p>
+
+    <div class="dl-card">
+      <div class="dl-version-row">
+        <span class="dl-version-dot" id="versionDot"></span>
+        <span id="versionText">Checking latest version…</span>
+      </div>
+      <a class="dl-btn" id="downloadBtn" href="https://github.com/reyhdz0119-cmyk/freehold-releases/releases/latest/download/Freehold-Setup.exe">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+        Download for Windows
+      </a>
+      <p class="dl-fineprint">This link always points to the newest release. Windows will likely warn that the installer is from an "unidentified publisher" — that's expected for an app this size without a paid code-signing certificate; it doesn't mean anything is wrong with the file.</p>
+    </div>
+
+    <section class="dl-section">
+      <h2>First time installing?</h2>
+      <p>Run the installer, open Freehold, and it'll show you a machine code on screen. Go to <a href="mailto:YOUR-EMAIL@example.com">your purchase email</a> for your license key, paste it in, and you're activated — on this one computer, no account or internet connection needed after that.</p>
+    </section>
+
+    <section class="dl-section">
+      <h2>Already have Freehold installed?</h2>
+      <p>You don't need to come here manually — Freehold checks in on its own, every so often, and lets you know on screen when a newer version exists. You can also open the app and choose "Look for Updates" from the Freehold menu at any time.</p>
+    </section>
+
+    <section class="dl-section">
+      <h2>Lost your license key?</h2>
+      <p>Check the receipt email from your original purchase — your key is in there. If you can't find it, reach out at <a href="mailto:YOUR-EMAIL@example.com">YOUR-EMAIL@example.com</a> with your purchase details.</p>
+    </section>
+  </div>
+
+  <footer class="dl-footer">Freehold — the budgeting app you own, not rent. &nbsp;·&nbsp; <a href="../privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="../terms.html">Terms of Service</a></footer>
+
+</div>
+
+<script>
+(function(){
+  var dot = document.getElementById("versionDot");
+  var text = document.getElementById("versionText");
+  fetch("https://api.github.com/repos/reyhdz0119-cmyk/freehold-releases/releases/latest")
+    .then(function(r){ if(!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function(release){
+      var version = (release.tag_name || "").replace(/^v/i, "");
+      dot.classList.add("ready");
+      text.innerHTML = "Latest version: <span class=\"dl-version-num\">v" + version + "</span>";
+    })
+    .catch(function(){
+      text.textContent = "Couldn't check the latest version right now — the download button below still works.";
+    });
+})();
+</script>
+
+</body>
+</html>
